@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<meta name="renderer" content="webkit" /> <!-- 让360支持高速渲染模式 -->
+<meta http-equiv="pragma" content="no-cache" /> 
+<meta http-equiv="Cache-Control" content="no-store, must-revalidate" /> 
+<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT" /> 
+<meta http-equiv="expires" content="0" />
+<link rel="shortcut icon" href="/favicon.ico?v=1.2" />
+<link href="/templets/default/style/common.css?v=1.2" rel="stylesheet" />
+<title>C语言数字后缀大全（一览表） - 玩转C语言和数据结构</title>
+<meta name="keywords" content="语言,数字,的,后缀,大全,一个,数字,是有,默认," />
+<meta name="description" content="一个数字，是有默认类型的：对于整数，默认是 int 类型；对于小数，默认是 double 类型。 请看下面的例子： long a = 100;int b = 294;float x = 52.55;double y = 18.6; 100 和 294 这两个数字默认都是" />
+</head>
+<body>
+
+<div id="header" class="clearfix">
+	<a id="logo" class="left" href="https://xiecoding.cn/">
+		<img height="26" src="/templets/default/images/logo_monkey.png" alt="玩转C语言和数据结构Logo" />
+	</a>
+	<ul id="nav-main" class="hover-none left clearfix">
+		<li><a href="https://xiecoding.cn/">首页</a></li>
+		<li><a href="https://xiecoding.cn/ds/">数据结构教程</a></li>
+		<li><a href="https://xiecoding.cn/c/">C语言教程</a></li>
+		<li><a href="https://xiecoding.cn/buy/">购买教程</a></li>
+		<li><a href="https://xiecoding.cn/sitemap/">更多>></a></li>
+		<!--<li><a href="/c/">辅导班</a></li>-->
+	</ul>
+	<span id="sidebar-toggle" class="toggle-btn" toggle-target="#sidebar">目录 <span class="glyphicon"></span></span>
+
+	<a href="https://xiecoding.cn/user/login.php" class="user-info glyphicon glyphicon-user hover-none" target="_blank" rel="nofollow" title="用户中心"></a>
+
+</div>
+<!--qq交流群
+<div id="header" class="clearfix">
+	<ul id="nav-main" class="hover-none left clearfix">
+		<li><a style="padding-left:10px" href="/uploads/allimg/240128/2-24012R01153206.jpg" target="_blank">QQ交流群：937184979</a></li>
+	</ul>
+</div>-->
+<div id="main" class="clearfix">
+	<div id="sidebar" class="toggle-target">
+	<div id="contents">
+		<dt><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>教程目录</dt>
+		
+			<dd>
+				<span class="channel-num">1</span>
+				<a href='/c/base/'>编程基础</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">2</span>
+				<a href='/c/begin/'>C语言初探</a>
+			</dd>
+		<dd class="this"> <span class="channel-num">3</span> <a href="/c/variable_datatype/">变量和数据类型</a> </dd><dl class="dl-sub"><dd>3.1 <a href="/view/414.html">大话C语言变量和数据类型</a></dd><dd>3.2 <a href="/view/415.html">在屏幕上输出各种类型的数据</a></dd><dd>3.3 <a href="/view/416.html">C语言中的整数（short,int,long,long long）</a></dd><dd>3.4 <a href="/view/417.html">二进制数、八进制数和十六进制数</a></dd><dd>3.5 <a href="/view/418.html">C语言中的正负数及其输出</a></dd><dd>3.6 <a href="/view/vip_419.html">整数在内存中是如何存储的，为什么它堪称天才般的设计</a><span class="glyphicon glyphicon-usd"></span></dd><dd>3.7 <a href="/view/vip_420.html">整数的取值范围以及数值溢出</a><span class="glyphicon glyphicon-usd"></span></dd><dd>3.8 <a href="/view/421.html">C语言中的小数（float,double,long double）</a></dd><dd>3.9 <a href="/view/622.html">C语言数字后缀大全（一览表）</a></dd><dd>3.10 <a href="/view/vip_422.html">小数在内存中是如何存储的，揭秘诺贝尔奖级别的设计</a><span class="glyphicon glyphicon-usd"></span></dd><dd>3.11 <a href="/view/423.html">在C语言中使用英文字符</a></dd><dd>3.12 <a href="/view/vip_425.html">在C语言中使用中文字符</a><span class="glyphicon glyphicon-usd"></span></dd><dd>3.13 <a href="/view/vip_426.html">C语言到底使用什么编码？谁说C语言使用ASCII码，真是荒谬！</a><span class="glyphicon glyphicon-usd"></span></dd><dd>3.14 <a href="/view/614.html">C99新增加了布尔类型（bool）！</a></dd><dd>3.15 <a href="/view/427.html">C语言转义字符</a></dd><dd>3.16 <a href="/view/428.html">C语言标识符、关键字、注释、表达式和语句</a></dd><dd>3.17 <a href="/view/430.html">C语言加减乘除运算</a></dd><dd>3.18 <a href="/view/431.html">C语言自增(++)和自减(--)</a></dd><dd>3.19 <a href="/view/654.html">C语言逗号运算符用法详解</a></dd><dd>3.20 <a href="/view/vip_432.html">变量的定义位置以及初始值</a><span class="glyphicon glyphicon-usd"></span></dd><dd>3.21 <a href="/view/433.html">运算符的优先级和结合性</a></dd><dd>3.22 <a href="/view/435.html">C语言数据类型转换</a></dd></dl>
+			<dd>
+				<span class="channel-num">4</span>
+				<a href='/c/io/'>C语言输入输出</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">5</span>
+				<a href='/c/branch_loop/'>循环结构和选择结构</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">6</span>
+				<a href='/c/array/'>C语言数组</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">7</span>
+				<a href='/c/function/'>C语言函数</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">8</span>
+				<a href='/c/preprocess/'>预处理命令</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">9</span>
+				<a href='/c/pointer/'>指针</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">10</span>
+				<a href='/c/struct/'>结构体</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">11</span>
+				<a href='/c/file/'>文件操作</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">12</span>
+				<a href='/c/debug/'>C语言调试</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">13</span>
+				<a href='/c/module/'>多文件编程</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">14</span>
+				<a href='/c/memory/'>C语言内存精讲</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">15</span>
+				<a href='/c/practice/'>C语言项目实战案例</a>
+			</dd>
+		
+	</div>
+</div>
+	<div id="article-wrap">
+		<div id="article">
+			<div id="arc-info" class="clearfix">
+    <!-- 左侧：面包屑导航 -->
+    <div class="breadcrumb-wrap left">
+        <span class="glyphicon glyphicon-home"></span>
+        <span class="breadcrumb-path">
+            <a href='https://xiexuewu.github.io/'>主页</a> > <a href='/c/'>C语言教程</a> > <a href='/c/variable_datatype/'>变量和数据类型</a> 
+        </span>
+    </div>
+    
+    <!-- 右侧：作者信息 -->
+    <div class="author-wrap right">
+        <span class="meta-item">
+            <span class="glyphicon glyphicon-user"></span>
+            <span class="meta-text">作者：解学武</span>
+        </span>
+    </div>
+</div>
+
+<!-- 清除浮动，确保不影响下方标题 -->
+<div class="clearfix"></div>
+			<h1>C语言数字后缀大全（一览表）</h1>
+			<div class="pre-next-page pre-next-detail clearfix">
+                    <span class="pre left"><span class="glyphicon glyphicon-menu-left"></span> <a href="/view/421.html">C语言中的小数（float,double,long double）</a></span>
+                    <span class="next right"><a href="/view/vip_422.html">小数在内存中是如何存储的，揭秘诺贝尔奖级别的设计</a> <span class="glyphicon glyphicon-menu-right"></span></span>
+                </div>
+                <div class="pre-next-page pre-next-brief clearfix">
+                    <span class="pre left"><span class="glyphicon glyphicon-menu-left"></span> <a href="#">上一节</a></span>
+                    <span class="next right"><a href="#">下一节</a> <span class="glyphicon glyphicon-menu-right"></span></span>
+                </div>
+                <script type="text/javascript">window.prePageURL = "/view/421.html";window.nextPageURL = "/view/vip_422.html";</script>
+			<div id="ad-arc-top">
+	<p class="pic">
+		<a id="top-banner" href="/buy/" target="_blank">
+			<img class="pc-yes" src="/uploads/ads/ad_pc.png" alt="C语言和数据结构教程+一对一答疑">
+			<img class="wap-yes" src="/uploads/ads/ad_wap.png" alt="C语言和数据结构教程+一对一答疑"></a>
+	</p>
+</div>
+
+<script>
+        // 获取当前页面的路径
+        const currentPath = window.location.pathname;
+        // 判断路径中是否包含vip_
+        const shouldHide = currentPath.indexOf('vip_')!== -1;
+        const adDiv = document.getElementById('ad-arc-top');
+        if (shouldHide) {
+            // 如果包含则隐藏该div元素
+            adDiv.style.display = 'none';
+        }
+</script>
+			<div id="arc-body">在 C语言中，一个数字是有默认类型的：对于整数，默认是 int 类型；对于小数，默认是 double 类型。<br />
+<br />
+请看下面的例子：
+<pre class="cpp">
+long a = 100;
+int b = 294;
+
+float x = 52.55;
+double y = 18.6;</pre>
+100 和 294 这两个数字默认都是 int 类型的，将 100 赋值给 a，必须先将 int 类型的 100 转换为 long 类型后才能赋值，而 294 和 b 的类型相同，将 294 赋值给 b 就不用转换了。<br />
+<br />
+52.55 和 18.6 这两个数字默认都是 double 类型的，将 52.55 赋值给 x，必须先从 double 类型转换为 float 类型，而将 18.6 赋值给 y 就不用转换了。<br />
+<br />
+如果不想让数字使用默认的类型，那么可以给数字加上后缀，手动指明类型，比如：
+<ul>
+	<li>
+		在整数后面紧跟 l 或者 L（不区分大小写）表明该数字是 long 类型；</li>
+	<li>
+		在小数后面紧跟 f 或者 F（不区分大小写）表明该数字是 float 类型。</li>
+</ul>
+<br />
+请看下面的代码：
+<pre class="c">
+long a = 100l;
+int b = 294;
+short c = 32L;
+   
+float x = 52.55f;
+double y = 18.6F;
+float z = 0.02;</pre>
+加上后缀，虽然数字的类型变了，但这并不意味着该数字只能赋值给指定的类型，它仍然能够赋值给其他的类型，只要进行了一下类型转换就可以了。
+<blockquote>
+	关于数据类型的转换，我们将在《<a href="/view/435.html" target="_blank">C语言数据类型转换</a>》一节中深入探讨。</blockquote>
+<h2>
+	C语言数字后缀一览表</h2>
+经过前面的学习，我们已经掌握了 C 语言众多的数据类型，为了帮助大家快速的记忆，也方便大家回顾，本文将 C 语言常用的各种数据类型，以及它们各自对应的后缀，整理成了一张表格。<br />
+<br />
+<table>
+	<caption>
+		表 1 C语言数字类型后缀</caption>
+	<tbody>
+		<tr>
+			<th>
+				数字类型</th>
+			<th>
+				后 缀</th>
+			<th>
+				举 例</th>
+		</tr>
+		<tr>
+			<th colspan="3">
+				整数类型</th>
+		</tr>
+		<tr>
+			<td>
+				int</td>
+			<td>
+				默认的整数类型，没有后缀</td>
+			<td>
+				100</td>
+		</tr>
+		<tr>
+			<td>
+				short</td>
+			<td>
+				没有后缀</td>
+			<td>
+				// 将 int 类型的 100 赋值给 num<br />
+				short num = 100;</td>
+		</tr>
+		<tr>
+			<td>
+				long</td>
+			<td>
+				紧跟 l（小写的 L）或者 L</td>
+			<td>
+				100l 或者&nbsp;100L</td>
+		</tr>
+		<tr>
+			<td>
+				long long</td>
+			<td>
+				紧跟 ll（小写的 LL）或者 LL</td>
+			<td>
+				100ll 或者&nbsp;100LL</td>
+		</tr>
+		<tr>
+			<td>
+				unsigned int</td>
+			<td>
+				紧跟 u 或者 U</td>
+			<td>
+				100u&nbsp;或者 100U</td>
+		</tr>
+		<tr>
+			<td>
+				unsigned short</td>
+			<td>
+				没有后缀</td>
+			<td>
+				// 将 int 类型的 100 赋值给 num<br />
+				unsigned short num = 100;</td>
+		</tr>
+		<tr>
+			<td>
+				unsigned long</td>
+			<td>
+				紧跟 ul 或者 UL</td>
+			<td>
+				100ul 或者 100UL</td>
+		</tr>
+		<tr>
+			<td>
+				unsigned long long</td>
+			<td>
+				紧跟 ull 或者 ULL</td>
+			<td>
+				100ull 或者 100ULL</td>
+		</tr>
+		<tr>
+			<th colspan="3">
+				浮点类型</th>
+		</tr>
+		<tr>
+			<td>
+				float</td>
+			<td>
+				紧跟 f 或者 F</td>
+			<td>
+				1.23f 或者 1.23F</td>
+		</tr>
+		<tr>
+			<td>
+				double</td>
+			<td>
+				默认的浮点类型，没有后缀</td>
+			<td>
+				1.23</td>
+		</tr>
+		<tr>
+			<td>
+				long double</td>
+			<td>
+				紧跟 l（小写的 L）或者 L</td>
+			<td>
+				1.23l 或者 1.23L</td>
+		</tr>
+	</tbody>
+</table>
+<br />
+举几个简单的例子：
+<pre class="c">
+short a = 10; // 10 是 int 类型
+int b = 100; // 100 是 int 类型
+long c = 9437L; // 9437 是 long 类型
+long long d = 123456LL; // 123456 是 long long 类型
+
+float f = 1.234f; // 1.234 是 float 类型
+long double e = 1.23456L; // 1.23456 是 long double 类型</pre>
+<blockquote>
+	<p>
+		对于初学者，很少会用到数字的后缀，加不加往往没有什么区别，也不影响实际编程，但是既然学了C语言，还是要知道这个知识点的，万一看到别人的代码这么用了，而你却不明白怎么回事，那就尴尬了。</p>
+</blockquote>
+<br/>声明：当前文章为本站“玩转C语言和数据结构”官方原创，由国家机构和地方版权局所签发的<a href="/uploads/allimg/240303/2-24030319530H13.gif" target="_blank">权威证书</a>所保护。</div>
+			<div class="pre-next-page pre-next-detail clearfix">
+                    <span class="pre left"><span class="glyphicon glyphicon-menu-left"></span> <a href="/view/421.html">C语言中的小数（float,double,long double）</a></span>
+                    <span class="next right"><a href="/view/vip_422.html">小数在内存中是如何存储的，揭秘诺贝尔奖级别的设计</a> <span class="glyphicon glyphicon-menu-right"></span></span>
+                </div>
+                <div class="pre-next-page pre-next-brief clearfix">
+                    <span class="pre left"><span class="glyphicon glyphicon-menu-left"></span> <a href="#">上一节</a></span>
+                    <span class="next right"><a href="#">下一节</a> <span class="glyphicon glyphicon-menu-right"></span></span>
+                </div>
+                <script type="text/javascript">window.prePageURL = "/view/421.html";window.nextPageURL = "/view/vip_422.html";</script>
+		</div>
+		
+	</div>
+</div>
+<div id="addweixin-widget" class="clearfix">
+	<div class="box">
+		<p>
+			<a href="/uploads/allimg/240115/2-240115210631414.png" target="_blank"><img src="/uploads/allimg/240115/2-240115210631414.png" alt="添加微信咨询" title="点击查看大图"></a>
+			<span class="pc-tip"><a href="/view/635.html" target="_blank" style="color: #55ab55; cursor: pointer;">加站长微信免费领<br>C语言学习小册</a></span>
+			<span class="wap-tip"><a href="/view/635.html" target="_blank" style="color: #55ab55; cursor: pointer;">加站长微信免费领C语言学习小册</a><br>微信ID：xiexuewu333</span>
+		</p>
+		<span id="close-addweixin-widget" class="glyphicon glyphicon-remove-circle"></span>
+	</div>
+</div>
+<script type="text/javascript">
+// 当前文章ID
+window.arcIdRaw = 'a_' + 622;
+window.arcId = "b2e0EO+zxL7BsHTCkyJVx2wc4vZLn2Mnrdzn+cmzdK9bwB9oNBuZqiURnQ";
+window.typeidChain = "23|20";
+</script>
+<div id="footer">
+	<ul id="nav-bottom" class="clearfix">
+		<li><a href="/sitemap/" target="_blank">编程笔记</a></li>
+		<li><a href="/buy/" target="_blank">购买教程（带答疑）</a></li>
+		<li><a href="/view/about_website.html" target="_blank">关于网站</a></li>
+		<li><a href="/view/267.html" target="_blank">联系站长</a></li>
+	</ul>
+	<p><span>Copyright ©2013-2025 xiecoding.cn</span><span style="padding: 0px 5px;">&nbsp;</span>
+		<span><img src="/templets/default/images/icp.png" alt="网络备案"> ICP备案：<a class="grey" href="https://beian.miit.gov.cn/" target="_blank">冀ICP备2025098420号</a></span>
+		<span style="padding: 0px 5px;">&nbsp;</span>
+		<span><img src="/templets/default/images/gongan.png" alt="公安部网络备案"> 公安部网络备案：<a class="grey" href="https://beian.mps.gov.cn/#/query/webSearch?code=13110202001476" target="_blank">冀公网安备13110202001476号</a></span></p >
+	<!-- 回到顶部按钮 -->
+	<div id="back-to-top" class="back-to-top" title="回到顶部">
+	    <span class="glyphicon glyphicon-menu-up"></span>
+	</div>
+</div>
+
+<script src="/templets/default/script/jquery1.12.4.min.js"></script>
+<script src="/templets/default/script/jquery.snippet.js"></script>
+<script src="/templets/default/script/common.js?v=1.2"></script>
+<span style="display: none;">
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"3Kk6sXrEnyLTeaqP",ck:"3Kk6sXrEnyLTeaqP"})</script>
+</span>
+
+
+
+</body>
+</html>

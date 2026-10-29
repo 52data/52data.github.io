@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<meta name="renderer" content="webkit" /> <!-- 让360支持高速渲染模式 -->
+<meta http-equiv="pragma" content="no-cache" /> 
+<meta http-equiv="Cache-Control" content="no-store, must-revalidate" /> 
+<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT" /> 
+<meta http-equiv="expires" content="0" />
+<link rel="shortcut icon" href="/favicon.ico?v=1.2" />
+<link href="/templets/default/style/common.css?v=1.2" rel="stylesheet" />
+<title>树的双亲表示法（C语言实现详解版） - 玩转C语言和数据结构</title>
+<meta name="keywords" content="树,的,双亲,表,示法,语言,实现,详解,版,前面," />
+<meta name="description" content="前面讲了二叉树的顺序存储和链式存储，本节来学习如何存储具有普通树结构的数据。 图 1 普通树存储结构 如图 1 所示，这是一棵普通的树，该如何存储呢？通常，存储具有普通树结构" />
+</head>
+<body>
+
+<div id="header" class="clearfix">
+	<a id="logo" class="left" href="https://xiecoding.cn/">
+		<img height="26" src="/templets/default/images/logo_monkey.png" alt="玩转C语言和数据结构Logo" />
+	</a>
+	<ul id="nav-main" class="hover-none left clearfix">
+		<li><a href="https://xiecoding.cn/">首页</a></li>
+		<li><a href="https://xiecoding.cn/ds/">数据结构教程</a></li>
+		<li><a href="https://xiecoding.cn/c/">C语言教程</a></li>
+		<li><a href="https://xiecoding.cn/buy/">购买教程</a></li>
+		<li><a href="https://xiecoding.cn/sitemap/">更多>></a></li>
+		<!--<li><a href="/c/">辅导班</a></li>-->
+	</ul>
+	<span id="sidebar-toggle" class="toggle-btn" toggle-target="#sidebar">目录 <span class="glyphicon"></span></span>
+
+	<a href="https://xiecoding.cn/user/login.php" class="user-info glyphicon glyphicon-user hover-none" target="_blank" rel="nofollow" title="用户中心"></a>
+
+</div>
+<!--qq交流群
+<div id="header" class="clearfix">
+	<ul id="nav-main" class="hover-none left clearfix">
+		<li><a style="padding-left:10px" href="/uploads/allimg/240128/2-24012R01153206.jpg" target="_blank">QQ交流群：937184979</a></li>
+	</ul>
+</div>-->
+<div id="main" class="clearfix">
+	<div id="sidebar" class="toggle-target">
+	<div id="contents">
+		<dt><span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>教程目录</dt>
+		
+			<dd>
+				<span class="channel-num">1</span>
+				<a href='/ds/intro/'>数据结构概述</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">2</span>
+				<a href='/ds/linear_list/'>线性表</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">3</span>
+				<a href='/ds/stack_queue/'>栈和队列</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">4</span>
+				<a href='/ds/string/'>字符串</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">5</span>
+				<a href='/ds/array_list/'>数组和广义表</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">6</span>
+				<a href='/ds/tree/'>树</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">7</span>
+				<a href='/ds/graph/'>图</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">8</span>
+				<a href='/ds/search/'>查找算法</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">9</span>
+				<a href='/ds/sort/'>排序算法</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">10</span>
+				<a href='/ds/out_sort/'>外部排序算法</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">11</span>
+				<a href='/ds/memory/'>动态内存管理</a>
+			</dd>
+		
+			<dd>
+				<span class="channel-num">12</span>
+				<a href='/ds/video/'>视频教程推荐</a>
+			</dd>
+		
+	</div>
+</div>
+	<div id="article-wrap">
+		<div id="article">
+			<div id="arc-info" class="clearfix">
+    <!-- 左侧：面包屑导航 -->
+    <div class="breadcrumb-wrap left">
+        <span class="glyphicon glyphicon-home"></span>
+        <span class="breadcrumb-path">
+            <a href='https://xiexuewu.github.io/'>主页</a> > <a href='/skill/'>经验技巧</a> 
+        </span>
+    </div>
+    
+    <!-- 右侧：作者信息 -->
+    <div class="author-wrap right">
+        <span class="meta-item">
+            <span class="glyphicon glyphicon-user"></span>
+            <span class="meta-text">作者：解学武</span>
+        </span>
+    </div>
+</div>
+
+<!-- 清除浮动，确保不影响下方标题 -->
+<div class="clearfix"></div>
+			<h1>树的双亲表示法（C语言实现详解版）</h1>
+			<div id="ad-arc-top">
+	<p class="pic">
+		<a id="top-banner" href="/buy/" target="_blank">
+			<img class="pc-yes" src="/uploads/ads/ad_pc.png" alt="C语言和数据结构教程+一对一答疑">
+			<img class="wap-yes" src="/uploads/ads/ad_wap.png" alt="C语言和数据结构教程+一对一答疑"></a>
+	</p>
+</div>
+
+<script>
+        // 获取当前页面的路径
+        const currentPath = window.location.pathname;
+        // 判断路径中是否包含vip_
+        const shouldHide = currentPath.indexOf('vip_')!== -1;
+        const adDiv = document.getElementById('ad-arc-top');
+        if (shouldHide) {
+            // 如果包含则隐藏该div元素
+            adDiv.style.display = 'none';
+        }
+</script>
+			<div id="arc-body">前面讲了<u><a href='/view/326.html' target='_blank'>二叉树</a></u>的顺序存储和链式存储，本节来学习如何存储具有普通<u><a href='/view/325.html' target='_blank'>树</a></u>结构的数据。
+<div style="text-align: center;">
+	<br />
+	<img alt="普通树存储结构" src="/uploads/allimg/181231/2-1Q2312025512N.gif" /><br />
+	图 1 普通树存储结构</div>
+<br />
+如图 1 所示，这是一棵普通的树，该如何存储呢？通常，存储具有普通树结构数据的方法有 3 种：
+<ol>
+	<li>
+		<u><a href='/view/332.html' target='_blank'>双亲表示法</a></u>；</li>
+	<li>
+		<u><a href='/view/197.html' target='_blank'>孩子表示法</a></u>；</li>
+	<li>
+		<u><a href='/view/198.html' target='_blank'>孩子兄弟表示法</a></u>；</li>
+</ol>
+<br />
+本节先来学习<span style="color:#008000;">双亲表示法</span>。<br />
+<br />
+<span style="color:#b22222;">双亲表示法采用<u><a href='/view/288.html' target='_blank'>顺序表</a></u>（也就是数组）存储普通树，其实现的核心思想是：顺序存储各个节点的同时，给各节点附加一个记录其父节点位置的变量。</span><br />
+<p class="info-box">
+	注意，根节点没有父节点（父节点又称为双亲节点），因此根节点记录父节点位置的变量通常置为 -1。</p>
+例如，采用双亲表示法存储图 1 中普通树，其存储状态如图 2 所示：
+<div style="text-align: center;">
+	<br />
+	<img alt="双亲表示法存储普通树示意图" src="/uploads/allimg/181231/2-1Q231202645110.gif" /><br />
+	图 2 双亲表示法存储普通树示意图</div>
+<br />
+图 2 存储普通树的过程转化为 C 语言代码为：
+<pre class="cpp">
+#define MAX_SIZE 100//宏定义树中结点的最大数量
+typedef char ElemType;//宏定义树结构中数据类型
+typedef struct Snode{
+    TElemType data;//树中结点的数据类型
+    int parent;//结点的父结点在数组中的位置下标
+}PTNode;
+typedef struct {
+    PTNode tnode[MAX_SIZE];//存放树中所有结点
+    int n;//根的位置下标和结点数
+}PTree;</pre>
+<br />
+因此，存储图 1 中普通树的 C 语言实现代码为：
+<pre class="cpp">
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#define MAX_SIZE 20
+typedef char ElemType;//宏定义树结构中数据类型
+typedef struct Snode&nbsp; //结点结构
+{
+&nbsp;&nbsp;&nbsp; ElemType data;
+&nbsp;&nbsp;&nbsp; int parent;
+}PNode;
+
+typedef struct&nbsp; //树结构
+{
+&nbsp;&nbsp;&nbsp; PNode tnode[MAX_SIZE];
+&nbsp;&nbsp;&nbsp; int n;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //结点个数
+}PTree;
+
+PTree InitPNode(PTree tree)
+{
+&nbsp;&nbsp;&nbsp; int i,j;
+&nbsp;&nbsp;&nbsp; char ch;
+&nbsp;&nbsp;&nbsp; printf(&quot;请输出节点个数:\n&quot;);
+&nbsp;&nbsp;&nbsp; scanf(&quot;%d&quot;,&amp;(tree.n));
+
+&nbsp;&nbsp;&nbsp; printf(&quot;请输入结点的值其双亲位于数组中的位置下标:\n&quot;);
+&nbsp;&nbsp;&nbsp; for(i=0; i&lt;tree.n; i++)
+&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fflush(stdin);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scanf(&quot;%c %d&quot;,&amp;ch,&amp;j);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tree.tnode[i].data = ch;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tree.tnode[i].parent = j;
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; return tree;
+}
+
+void FindParent(PTree tree)
+{
+&nbsp;&nbsp;&nbsp; char a;
+&nbsp;&nbsp;&nbsp; int isfind = 0;
+&nbsp;&nbsp;&nbsp; printf(&quot;请输入要查询的结点值:\n&quot;);
+&nbsp;&nbsp;&nbsp; fflush(stdin);
+&nbsp;&nbsp;&nbsp; scanf(&quot;%c&quot;,&amp;a);
+&nbsp;&nbsp;&nbsp; for(int i =0;i&lt;tree.n;i++){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(tree.tnode[i].data == a){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; isfind=1;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int ad=tree.tnode[i].parent;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;%c的父节点为 %c,存储位置下标为 %d&quot;,a,tree.tnode[ad].data,ad);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; if(isfind == 0){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;树中无此节点&quot;);
+&nbsp;&nbsp;&nbsp; }
+}
+
+int main()
+{
+&nbsp;&nbsp;&nbsp; PTree tree;
+&nbsp;&nbsp;&nbsp; tree = InitPNode(tree);
+&nbsp;&nbsp;&nbsp; FindParent(tree);
+&nbsp;&nbsp;&nbsp; return 0;
+}
+</pre>
+程序运行示例：
+<p class="info-box">
+	请输出节点个数:<br />
+	10<br />
+	请输入结点的值其双亲位于数组中的位置下标:<br />
+	R -1<br />
+	A 0<br />
+	B 0<br />
+	C 0<br />
+	D 1<br />
+	E 1<br />
+	F 3<br />
+	G 6<br />
+	H 6<br />
+	K 6<br />
+	请输入要查询的结点值:<br />
+	C<br />
+	C的父节点为 R,存储位置下标为 0</p>
+<br/>声明：当前文章为本站“玩转C语言和数据结构”官方原创，由国家机构和地方版权局所签发的<a href="/uploads/allimg/240303/2-24030319530H13.gif" target="_blank">权威证书</a>所保护。</div>
+		</div>
+		
+	</div>
+</div>
+<div id="addweixin-widget" class="clearfix">
+	<div class="box">
+		<p>
+			<a href="/uploads/allimg/240115/2-240115210631414.png" target="_blank"><img src="/uploads/allimg/240115/2-240115210631414.png" alt="添加微信咨询" title="点击查看大图"></a>
+			<span class="pc-tip"><a href="/view/635.html" target="_blank" style="color: #55ab55; cursor: pointer;">加站长微信免费领<br>C语言学习小册</a></span>
+			<span class="wap-tip"><a href="/view/635.html" target="_blank" style="color: #55ab55; cursor: pointer;">加站长微信免费领C语言学习小册</a><br>微信ID：xiexuewu333</span>
+		</p>
+		<span id="close-addweixin-widget" class="glyphicon glyphicon-remove-circle"></span>
+	</div>
+</div>
+<script type="text/javascript">
+// 当前文章ID
+window.arcIdRaw = 'a_' + 196;
+window.arcId = "7b7dDVKUbqbeIC0y4leRxkqNxYJfxv5niyO03kxlHtvRUOYcbIExBa3OdA";
+window.typeidChain = "14";
+</script>
+<div id="footer">
+	<ul id="nav-bottom" class="clearfix">
+		<li><a href="/sitemap/" target="_blank">编程笔记</a></li>
+		<li><a href="/buy/" target="_blank">购买教程（带答疑）</a></li>
+		<li><a href="/view/about_website.html" target="_blank">关于网站</a></li>
+		<li><a href="/view/267.html" target="_blank">联系站长</a></li>
+	</ul>
+	<p><span>Copyright ©2013-2025 xiecoding.cn</span><span style="padding: 0px 5px;">&nbsp;</span>
+		<span><img src="/templets/default/images/icp.png" alt="网络备案"> ICP备案：<a class="grey" href="https://beian.miit.gov.cn/" target="_blank">冀ICP备2025098420号</a></span>
+		<span style="padding: 0px 5px;">&nbsp;</span>
+		<span><img src="/templets/default/images/gongan.png" alt="公安部网络备案"> 公安部网络备案：<a class="grey" href="https://beian.mps.gov.cn/#/query/webSearch?code=13110202001476" target="_blank">冀公网安备13110202001476号</a></span></p >
+	<!-- 回到顶部按钮 -->
+	<div id="back-to-top" class="back-to-top" title="回到顶部">
+	    <span class="glyphicon glyphicon-menu-up"></span>
+	</div>
+</div>
+
+<script src="/templets/default/script/jquery1.12.4.min.js"></script>
+<script src="/templets/default/script/jquery.snippet.js"></script>
+<script src="/templets/default/script/common.js?v=1.2"></script>
+<span style="display: none;">
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"3Kk6sXrEnyLTeaqP",ck:"3Kk6sXrEnyLTeaqP"})</script>
+</span>
+
+
+
+</body>
+</html>
